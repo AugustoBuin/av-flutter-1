@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+
+class TelaInicial extends StatelessWidget {
+  const TelaInicial({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Tela Inicial"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+                'data:image/png;base64,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'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: const Text('Acessar Login'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
