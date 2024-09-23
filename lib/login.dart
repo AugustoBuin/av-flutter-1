@@ -13,8 +13,13 @@ class TelaLoginState extends State<TelaLogin> {
   final TextEditingController _nomeController = TextEditingController();
   final TextEditingController _senhaController = TextEditingController();
   String token = '';
+  bool carregando = false;
 
   Future<void> login() async {
+    setState(() {
+      carregando = true;
+    });
+
     final response = await http.post(
       Uri.parse('http://demo9168476.mockable.io/login'),
       body: jsonEncode({
@@ -27,6 +32,13 @@ class TelaLoginState extends State<TelaLogin> {
       setState(() {
         token = data['token'];
       });
+
+      await Future.delayed(const Duration(seconds: 2));
+
+      setState(() {
+        carregando = false;
+      });
+
       Navigator.pushNamed(context, '/notasAlunos', arguments: token);
     }
   }
@@ -54,6 +66,7 @@ class TelaLoginState extends State<TelaLogin> {
               child: const Text('Login'),
             ),
             const SizedBox(height: 20),
+            if (carregando) const Text('Carregando...'),
             if (token.isNotEmpty) Text('Token: $token'),
           ],
         ),

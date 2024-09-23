@@ -50,6 +50,10 @@ class TelaNotasState extends State<TelaNotas> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
+                onPressed: () => filtrarAlunos(0, 100),
+                child: const Text('Todas'),
+              ),
+              ElevatedButton(
                 onPressed: () => filtrarAlunos(0, 60),
                 child: const Text('Nota < 60'),
               ),
