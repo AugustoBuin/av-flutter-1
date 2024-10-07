@@ -50,7 +50,7 @@ class TelaNotasState extends State<TelaNotas> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                onPressed: () => filtrarAlunos(0, 100),
+                onPressed: () => filtrarAlunos(0, 101),
                 child: const Text('Todas'),
               ),
               ElevatedButton(
@@ -71,14 +71,16 @@ class TelaNotasState extends State<TelaNotas> {
             child: ListView.builder(
               itemCount: alunosFiltrados.length,
               itemBuilder: (context, index) {
+                // final aluno = alunosFiltrados[index];
+                // final cor = aluno['nota'] == 100
+                //     ? Colors.green
+                //     : aluno['nota'] >= 60
+                //         ? Colors.blue
+                //         : Colors.yellow;
                 final aluno = alunosFiltrados[index];
-                final cor = aluno['nota'] == 100
-                    ? Colors.green
-                    : aluno['nota'] >= 60
-                        ? Colors.blue
-                        : Colors.yellow;
+
                 return Container(
-                  color: cor,
+                  color: index % 2 == 0 ? Colors.grey : Colors.white,
                   child: ListTile(
                     title: Text('${aluno['nome']} - Nota: ${aluno['nota']}'),
                   ),
